@@ -29,6 +29,7 @@ This is a minimal, keyboard-first Neovim configuration optimized for coding and 
 - **bufferline.nvim** - Buffer tab bar across the top
 - **lualine.nvim** - Statusline with git, diagnostics, file info, and cursor position
 - **telescope.nvim** - Fuzzy finder for files, text, buffers
+- **trouble.nvim** - Persistent tree view for diagnostics, quickfix, and location lists
 - **which-key.nvim** - Shows available keybindings (press `<leader>?` or `<leader>h`)
 
 ### Code Intelligence
@@ -73,6 +74,14 @@ All main commands use `<leader>` (Space) prefix for easy discoverability.
 <leader>fd   Show diagnostics
 <leader>fs   Grep word under cursor
 <leader>fr   Resume last picker
+```
+
+### Diagnostics (Trouble)
+```
+<leader>xx   Toggle workspace diagnostics tree
+<leader>xX   Toggle current-buffer diagnostics tree
+<leader>xq   Toggle quickfix tree
+<leader>xl   Toggle location-list tree
 ```
 
 ### File Tree (nvim-tree)

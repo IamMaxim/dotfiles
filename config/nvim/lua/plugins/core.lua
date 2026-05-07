@@ -33,6 +33,7 @@ return {
         { '<leader>m', group = 'markdown' },
         { '<leader>r', group = 'rust' },
         { '<leader>u', group = 'ui' },
+        { '<leader>x', group = 'diagnostics' },
       },
     },
   },
@@ -251,6 +252,17 @@ return {
       vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Grep word under cursor' })
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Resume picker' })
     end,
+  },
+  {
+    'folke/trouble.nvim',
+    cmd = 'Trouble',
+    keys = {
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<CR>', desc = 'Diagnostics tree' },
+      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Buffer diagnostics tree' },
+      { '<leader>xq', '<cmd>Trouble qflist toggle<CR>', desc = 'Quickfix tree' },
+      { '<leader>xl', '<cmd>Trouble loclist toggle<CR>', desc = 'Location list tree' },
+    },
+    opts = {},
   },
   {
     'nvim-treesitter/nvim-treesitter',

@@ -17,6 +17,7 @@ config/nvim/lazy-local.json
 config/nvim/local.lua
 config/nvim/.nvimlog
 config/nvim/*.log
+# Ignore machine-specific spell files, including added exceptions
 config/nvim/spell/
 
 tmux/tmux/plugins/
