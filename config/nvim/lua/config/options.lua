@@ -36,6 +36,17 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.pumheight = 12
 opt.spelllang = { 'en', 'ru' }
 
+vim.diagnostic.config({
+  severity_sort = true,
+  signs = true,
+  underline = true,
+  virtual_text = {
+    spacing = 2,
+    source = 'if_many',
+    prefix = '●',
+  },
+})
+
 -- Hide command bar by default.
 -- Instead, it's shown only in command mode in place of status line.
 vim.o.cmdheight = 0
