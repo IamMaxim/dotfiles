@@ -17,6 +17,14 @@ local function split_env_list(value)
   return items
 end
 
+local function workspace_root(filename)
+  if #split_env_list(vim.env.RA_LINKED_PROJECTS) > 0 then
+    return launch_cwd
+  end
+
+  return repo_root(filename)
+end
+
 local function to_linked_project(item)
   local path = item
   if not vim.startswith(path, '/') then
@@ -40,7 +48,6 @@ local function env_number(name)
 end
 
 vim.g.rustaceanvim = function()
-  local root = repo_root(vim.api.nvim_buf_get_name(0))
   local linked_projects = {}
   for _, item in ipairs(split_env_list(vim.env.RA_LINKED_PROJECTS)) do
     table.insert(linked_projects, to_linked_project(item))
@@ -92,7 +99,7 @@ vim.g.rustaceanvim = function()
     server = {
       capabilities = capabilities,
       root_dir = function(filename)
-        return repo_root(filename)
+        return workspace_root(filename)
       end,
       standalone = false,
       default_settings = {

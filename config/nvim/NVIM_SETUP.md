@@ -30,6 +30,7 @@ This is a minimal, keyboard-first Neovim configuration optimized for coding and 
 - **lualine.nvim** - Statusline with git, diagnostics, file info, and cursor position
 - **telescope.nvim** - Fuzzy finder for files, text, buffers
 - **trouble.nvim** - Persistent tree view for diagnostics, quickfix, and location lists
+- **diffview.nvim** - Git diff views for staged and unstaged files
 - **which-key.nvim** - Shows available keybindings (press `<leader>?` or `<leader>h`)
 
 ### Code Intelligence
@@ -55,6 +56,7 @@ This is a minimal, keyboard-first Neovim configuration optimized for coding and 
 
 ### Git Integration
 - **gitsigns.nvim** - Shows git change markers (added/modified/deleted lines) on the left
+- **Git panel** - Right-side multi-repo changed-file tree for the current working directory
 
 ---
 
@@ -89,6 +91,14 @@ All main commands use `<leader>` (Space) prefix for easy discoverability.
 <leader>e    Toggle file tree
 <leader>E    Reveal current file in tree
 ```
+
+### Git
+```
+<leader>gs   Toggle git panel
+<leader>gS   Refresh git panel
+```
+
+The git panel scans the current working directory and its direct child directories for Git repositories. It shows staged and unstaged files separately. Press `<CR>` or double-click a file to open its diff. Opening another file from the panel reuses the same Diffview tab.
 
 ### Buffers
 ```
@@ -330,7 +340,7 @@ nvim --server ~/.cache/nvim/rust-dev.sock --remote ~/work/your-repo/services/api
 nvim --server ~/.cache/nvim/rust-dev.sock --remote ~/work/your-repo/services/billing/src/lib.rs
 ```
 
-Scope rust-analyzer to the projects relevant to the current feature with `RA_LINKED_PROJECTS`. Values are colon-separated and can be either directories containing `Cargo.toml` or direct `Cargo.toml` paths. Relative entries are resolved from the directory where Neovim was started, not from the Rust file's repo root:
+Scope rust-analyzer to the projects relevant to the current feature with `RA_LINKED_PROJECTS`. Values are colon-separated and can be either directories containing `Cargo.toml` or direct `Cargo.toml` paths. When this is set, rust-analyzer uses the directory where Neovim was started as its LSP root, and relative entries are resolved from that same directory:
 
 ```bash
 export RA_LINKED_PROJECTS='services/api:services/billing:crates/shared-types'

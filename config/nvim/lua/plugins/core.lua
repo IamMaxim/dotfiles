@@ -265,6 +265,47 @@ return {
     opts = {},
   },
   {
+    'sindrets/diffview.nvim',
+    cmd = {
+      'DiffviewOpen',
+      'DiffviewClose',
+      'DiffviewToggleFiles',
+      'DiffviewFocusFiles',
+      'DiffviewRefresh',
+    },
+    keys = {
+      {
+        '<leader>gs',
+        function()
+          require('config.git_panel').toggle()
+        end,
+        desc = 'Git panel',
+      },
+      {
+        '<leader>gS',
+        function()
+          require('config.git_panel').refresh()
+        end,
+        desc = 'Refresh git panel',
+      },
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('diffview').setup({
+        file_panel = {
+          listing_style = 'tree',
+          win_config = {
+            position = 'right',
+            width = 42,
+          },
+        },
+      })
+    end,
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
