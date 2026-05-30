@@ -16,5 +16,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
     vim.opt_local.spell = true
+    -- Honor treesitter @nospell captures so code blocks/inline code aren't spellchecked
+    vim.opt_local.spelloptions = 'noplainbuffer'
   end,
 })
