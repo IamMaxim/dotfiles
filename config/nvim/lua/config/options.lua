@@ -7,7 +7,6 @@ opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
 opt.wrap = false
-opt.colorcolumn = { '81', '121' }
 opt.splitbelow = true
 opt.splitright = true
 opt.mouse = 'a'
