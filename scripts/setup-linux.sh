@@ -14,6 +14,10 @@ case "$(uname -s)" in
 esac
 
 ensure_symlink "$HOME/.config/nvim" "$repo_root/config/nvim"
+ensure_symlink "$HOME/.config/starship.toml" "$repo_root/config/starship.toml"
+# Common, cross-machine zsh settings. The machine-specific ~/.zshrc stays local
+# (uncommitted) and should `source ~/.zshrc.max-dotfiles`.
+ensure_symlink "$HOME/.zshrc.max-dotfiles" "$repo_root/zsh/.zshrc.max-dotfiles"
 ensure_symlink "$HOME/.tmux.conf" "$repo_root/tmux/tmux.conf"
 ensure_symlink "$HOME/.tmux" "$repo_root/tmux/tmux"
 ensure_tmux_plugins "$repo_root/tmux/tmux/plugins"

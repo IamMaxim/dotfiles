@@ -1,0 +1,14 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[directory]
+# Don't truncate path when in Git repo
+truncate_to_repo = false
+# Extend the available path sections
+truncation_length = 5
+
+[java]
+disabled = true

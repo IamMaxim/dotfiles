@@ -1,0 +1,30 @@
+# ~/.zshrc.max-dotfiles
+# Common zsh settings shared across all of Max's machines.
+# Sourced from the machine-specific ~/.zshrc. Keep anything machine-specific
+# (plugin paths, nvm location, per-host aliases) OUT of this file.
+
+# --- History ---------------------------------------------------------------
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=999000
+SAVEHIST=100000
+setopt INC_APPEND_HISTORY      # Append to history immediately, don't wait for exit
+setopt EXTENDED_HISTORY        # Record as ":start:elapsed;command"
+setopt HIST_EXPIRE_DUPS_FIRST  # Drop duplicates first when trimming
+setopt HIST_IGNORE_DUPS        # Don't record an entry that was just recorded
+setopt SHARE_HISTORY           # Share history across concurrent sessions
+
+# --- Keybindings -----------------------------------------------------------
+bindkey -e                     # Emacs keybindings
+
+# --- Completion ------------------------------------------------------------
+fpath=($HOME/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+# --- Misc ------------------------------------------------------------------
+setopt NO_BEEP
+export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
+
+# --- Prompt ----------------------------------------------------------------
+# starship is fast (~0.01s) and replaces powerlevel10k.
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
