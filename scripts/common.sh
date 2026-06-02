@@ -65,3 +65,15 @@ ensure_tmux_plugins() {
   ensure_git_clone https://github.com/tmux-plugins/tpm "$plugin_dir/tpm"
   ensure_git_clone https://github.com/tmux-plugins/tmux-sensible "$plugin_dir/tmux-sensible"
 }
+
+# Build + install the tmux-inbox status-bar notifier (Rust). Delegates to the
+# crate's own build.sh, which builds release, installs the binary onto PATH,
+# and runs `cargo clean` to keep disk usage low.
+ensure_tmux_inbox() {
+  crate_dir=$1
+  if ! command -v cargo >/dev/null 2>&1; then
+    die "cargo not found — install Rust (https://rustup.rs) before bootstrapping tmux-inbox"
+  fi
+  chmod +x "$crate_dir/build.sh"
+  "$crate_dir/build.sh"
+}
