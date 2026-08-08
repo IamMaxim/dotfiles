@@ -16,6 +16,10 @@ setopt SHARE_HISTORY           # Share history across concurrent sessions
 # --- Keybindings -----------------------------------------------------------
 bindkey -e                     # Emacs keybindings
 
+# Ctrl + arrows to jump words
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
 # --- Completion ------------------------------------------------------------
 fpath=($HOME/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
