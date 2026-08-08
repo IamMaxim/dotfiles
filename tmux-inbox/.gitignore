@@ -1,6 +1,0 @@
-# Build artifacts. `build.sh` runs `cargo clean` after install, but keep this
-# so in-progress dev builds aren't accidentally committed.
-/target
-
-# Cargo.lock IS committed: tmux-inbox is a binary, so a pinned lockfile gives
-# reproducible installs across machines.
