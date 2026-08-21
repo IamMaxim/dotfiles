@@ -15,6 +15,7 @@ esac
 
 ensure_symlink "$HOME/.config/nvim" "$repo_root/config/nvim"
 ensure_symlink "$HOME/.config/starship.toml" "$repo_root/config/starship.toml"
+ensure_symlink "$HOME/.claude/statusline-command.sh" "$repo_root/config/claude/statusline.sh"
 # Common, cross-machine zsh settings. The machine-specific ~/.zshrc on macOS
 # should `source ~/.zshrc.max-dotfiles` (not symlinked here, since each machine
 # keeps its own ~/.zshrc body).
@@ -24,6 +25,7 @@ ensure_symlink "$HOME/.tmux" "$repo_root/tmux/tmux"
 ensure_tmux_plugins "$repo_root/tmux/tmux/plugins"
 
 chmod +x "$repo_root/tmux/tmux/battery-status.sh"
+chmod +x "$repo_root/config/claude/statusline.sh"
 chmod +x "$script_dir/setup-macos.sh" "$script_dir/setup-linux.sh" "$repo_root/scripts/common.sh"
 
 log "macOS dotfiles bootstrap complete"
